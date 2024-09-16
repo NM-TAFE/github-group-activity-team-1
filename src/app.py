@@ -22,8 +22,10 @@ def check_winner():
 
     for combo in winning_conditions:
         if board[combo[0]] == board[combo[1]] == board[combo[2]] and board[combo[0]] != ' ':
+            print(f"Winner found: {board[combo[0]]} at positions {combo}")  # Debugging line
             return board[combo[0]]
 
+    print("No winner found.")  # Debugging line
     return None
 
 
@@ -78,4 +80,5 @@ def reset():
     return redirect(url_for('index'))
 
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
