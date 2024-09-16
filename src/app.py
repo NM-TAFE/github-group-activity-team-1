@@ -10,10 +10,19 @@ current_player = 'X'
 def check_winner():
     """
     Check for a winner in the game.
-    This function should check all possible winning combinations on the board.
+    This function checks all possible winning combinations on the board.
     Returns:
-        Todo ?
+        str or None: 
+            - If a player has won, returns the marker ('X' or 'O') of the winning player.
+            - If there is no winner yet, returns None.
     """
+    winning_conditions = [[0, 4, 8], [2, 4, 6],  # diagonals
+                          [0, 3, 6], [1, 4, 7], [2, 5, 8],  # columns
+                          [0, 1, 2], [3, 4, 5], [6, 7, 8]]  # rows
+
+    for combo in winning_conditions:
+        if board[combo[0]] == board[combo[1]] == board[combo[2]] and board[combo[0]] != ' ':
+            return board[combo[0]]
 
     return None
 
