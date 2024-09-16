@@ -22,10 +22,8 @@ def check_winner(board):
 
     for combo in winning_conditions:
         if board[combo[0]] == board[combo[1]] == board[combo[2]] and board[combo[0]] != ' ':
-            print(f"Winner found: {board[combo[0]]} at positions {combo}")  # Debugging line
             return board[combo[0]]
 
-    print("No winner found.")  # Debugging line
     return None
 
 
@@ -50,7 +48,7 @@ def index():
     the board, the current player, and whether there's a winner or a draw.
 
     """
-    winner = check_winner()
+    winner = check_winner(board)
     draw = check_draw()
     return render_template('index.html', board=board, current_player=current_player, winner=winner, draw=draw)
 

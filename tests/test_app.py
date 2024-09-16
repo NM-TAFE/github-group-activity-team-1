@@ -23,5 +23,8 @@ class TestApp(unittest.TestCase):
         board = ['X', 'X', 'X', ' ', ' ', ' ', ' ', ' ', ' ']
         self.assertEqual(check_winner(board), 'X')
 
+        board = ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X']
+        self.assertEqual(check_winner(board), 'X')
+
 if __name__ == '__main__':
     unittest.main()
