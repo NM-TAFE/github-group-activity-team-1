@@ -27,6 +27,11 @@
       <p class="current-player">Current Player: {{ current_player }}</p>
       {% endif %}
       <a href="{{ url_for('reset') }}" class="reset-button">Reset Game</a>
+      <div class="score-tally">
+          <h2>Score Counter</h2>
+          <p class="x-tally">X: {{ results['X'] }}</p>
+          <p class="o-tally">O: {{ results['O'] }}</p>
+      </div>
     </div>
   </body>
 </html>
