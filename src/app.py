@@ -8,14 +8,20 @@ current_player = 'X'
 
 # NOTE: you cannot use this answer in Portfolio Part 2
 def check_winner():
-    # Winning combinations
-    winning_conditions = [[0, 4, 8], [2, 4, 6],  # diagnols
-                          [0, 3, 6], [1, 4, 7], [2, 5, 8],  # column
-                          [0, 1, 2], [3, 4, 5], [6, 7, 8]]  # row
+    """
+    Check for a winner in the game.
+    This function checks all possible winning combinations on the board.
+    Returns:
+        str: The marker ('X' or 'O') of the winning player if there is a winner, otherwise None.
+    """
+    winning_conditions = [[0, 4, 8], [2, 4, 6],  # diagonals
+                          [0, 3, 6], [1, 4, 7], [2, 5, 8],  # columns
+                          [0, 1, 2], [3, 4, 5], [6, 7, 8]]  # rows
 
     for combo in winning_conditions:
         if board[combo[0]] == board[combo[1]] == board[combo[2]] and board[combo[0]] != ' ':
             return board[combo[0]]
+
     return None
 
 
