@@ -12,7 +12,9 @@ def check_winner():
     Check for a winner in the game.
     This function checks all possible winning combinations on the board.
     Returns:
-        str: The marker ('X' or 'O') of the winning player if there is a winner, otherwise None.
+        str or None: 
+            - If a player has won, returns the marker ('X' or 'O') of the winning player.
+            - If there is no winner yet, returns None.
     """
     winning_conditions = [[0, 4, 8], [2, 4, 6],  # diagonals
                           [0, 3, 6], [1, 4, 7], [2, 5, 8],  # columns
@@ -26,11 +28,26 @@ def check_winner():
 
 
 def check_draw():
+    """
+    Check if current state is a draw.
+
+    It's a draw if the board does not have any free moves and there is no winner.
+
+    Returns:
+        Todo ?
+    """
     return ' ' not in board
 
 
 @app.route('/')
 def index():
+    """
+    Load the game board and display the current game state.
+
+    Renders the 'index.html' template with the current state of the game including
+    the board, the current player, and whether there's a winner or a draw.
+
+    """
     winner = check_winner()
     draw = check_draw()
     return render_template('index.html', board=board, current_player=current_player, winner=winner, draw=draw)
@@ -38,6 +55,9 @@ def index():
 
 @app.route('/play/<int:cell>')
 def play(cell):
+    """
+    Updates the board with the current player's move if the selected cell is empty.
+    """
     # breakpoint()
     global current_player
     if board[cell] == ' ':
@@ -49,6 +69,9 @@ def play(cell):
 
 @app.route('/reset')
 def reset():
+    """
+    Reset the game to the initial state.
+    """
     global board, current_player
     board = [' '] * 9
     current_player = 'X'
