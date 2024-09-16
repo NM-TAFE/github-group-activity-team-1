@@ -56,3 +56,19 @@ body {
   font-size: 1.2em;
   margin-bottom: 20px;
 }
+
+.score-tally{
+  margin: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+.score-tally h2{
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.score-tally p{
+  display: flex;
+  flex-direction: column;
+}
