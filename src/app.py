@@ -8,7 +8,7 @@ current_player = 'X'
 results = {'X': 0, 'O': 0}
 
 # NOTE: you cannot use this answer in Portfolio Part 2
-def check_winner():
+def check_winner(board):
     """
     Check for a winner in the game.
     This function checks all possible winning combinations on the board.
@@ -54,7 +54,7 @@ def index():
     the board, the current player, and whether there's a winner or a draw.
 
     """
-    winner = check_winner()
+    winner = check_winner(board)
     draw = check_draw()
     return render_template('index.html', board=board, current_player=current_player, winner=winner, draw=draw, results=results)
 
@@ -68,11 +68,14 @@ def play(cell):
     global current_player
     if board[cell] == ' ':
         board[cell] = current_player
-        winner = check_winner()
+
+        # Check if there is a winner
+        winner = check_winner(board)
         if winner:
             tally_wins(winner)
-        if not check_winner():
+        elif not check_winner(board):
             current_player = 'O' if current_player == 'X' else 'X'
+    
     return redirect(url_for('index'))
 
 
@@ -87,4 +90,5 @@ def reset():
     return redirect(url_for('index'))
 
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
